@@ -1,2 +1,2 @@
-include ':app', ':myextensions'
+include ':myextensions'
 rootProject.name='My Extensions'
