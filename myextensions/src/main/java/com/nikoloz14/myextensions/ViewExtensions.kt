@@ -3,16 +3,17 @@ package com.nikoloz14.myextensions
 import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.*
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.annotation.LayoutRes
 
 fun View.makeVisible() {
-    this.visibility = View.VISIBLE
+    this.visibility = VISIBLE
 }
 
 fun View.makeInvisible() {
-    this.visibility = View.INVISIBLE
+    this.visibility = INVISIBLE
 }
 
 fun View.makeGone() {
@@ -20,12 +21,18 @@ fun View.makeGone() {
 }
 
 fun View.makeVisibleOrGone(visible: Boolean) {
-    this.visibility = if (visible) View.VISIBLE else View.GONE
+    this.visibility = if (visible) VISIBLE else View.GONE
 }
 
 fun View.makeVisibleOrInvisible(visible: Boolean) {
-    this.visibility = if (visible) View.VISIBLE else View.INVISIBLE
+    this.visibility = if (visible) VISIBLE else INVISIBLE
 }
+
+fun View.isVisible() = this.visibility == VISIBLE
+
+fun View.isInvisible() = this.visibility == INVISIBLE
+
+fun View.isGone() = this.visibility == GONE
 
 fun View.setPaddingStart(padding: Int) {
     setPadding(padding, paddingTop, paddingEnd, paddingBottom)
