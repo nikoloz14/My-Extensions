@@ -9,6 +9,12 @@ fun Long.parseToDateFormat(dateFormatString: String): String {
     return dateFormat.format(date)
 }
 
+fun Long.parseToDateFormat(dateFormatString: String, locale: Locale): String {
+    val dateFormat = SimpleDateFormat(dateFormatString, locale)
+    val date = Date(this)
+    return dateFormat.format(date)
+}
+
 fun Long.getDayFromDate(): Int {
     val cal = Calendar.getInstance()
     cal.timeInMillis = this
