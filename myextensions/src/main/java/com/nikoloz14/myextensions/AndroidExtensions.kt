@@ -33,6 +33,12 @@ val Int.asDp: Int
 val Int.asPx: Int
     get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
+val Float.asDp: Int
+    get() = (this / Resources.getSystem().displayMetrics.density).toInt()
+
+val Float.asPx: Int
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
 fun postDelayed(time: Long, runnable: Runnable) {
     Handler().postDelayed(runnable, time)
 }
