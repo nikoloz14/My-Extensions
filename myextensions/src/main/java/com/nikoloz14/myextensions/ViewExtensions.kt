@@ -58,6 +58,31 @@ fun View.setPaddingBottom(padding: Int) {
     setPadding(paddingStart, paddingTop, paddingEnd, padding)
 }
 
+fun View.setMargins(top: Int? = null, bottom: Int? = null, start: Int? = null, end: Int? = null) {
+    val params = layoutParams as ViewGroup.MarginLayoutParams
+    top?.let { params.topMargin = it }
+    bottom?.let { params.bottomMargin = it }
+    start?.let { params.marginStart = it }
+    end?.let { params.marginEnd = it }
+    layoutParams = params
+}
+
+fun View.setMarginTop(margin: Int) {
+    setMargins(top = margin)
+}
+
+fun View.setMarginBottom(margin: Int) {
+    setMargins(bottom = margin)
+}
+
+fun View.setMarginStart(margin: Int) {
+    setMargins(start = margin)
+}
+
+fun View.setMarginEnd(margin: Int) {
+    setMargins(end = margin)
+}
+
 fun inflateView(container: ViewGroup, @LayoutRes layoutRes: Int, attachToRoot: Boolean = false) =
     LayoutInflater.from(container.context).inflate(layoutRes, container, attachToRoot)
 
@@ -67,10 +92,14 @@ fun View.isViewsOverlapingView(secondView: View): Boolean {
 
     getLocationOnScreen(firstPosition)
     secondView.getLocationOnScreen(secondPosition)
-    val rectFirstView = Rect(firstPosition[0], firstPosition[1],
-        firstPosition[0] + measuredWidth, firstPosition[1] + measuredHeight)
-    val rectSecondView = Rect(secondPosition[0], secondPosition[1],
-        secondPosition[0] + secondView.measuredWidth, secondPosition[1] + secondView.measuredHeight)
+    val rectFirstView = Rect(
+        firstPosition[0], firstPosition[1],
+        firstPosition[0] + measuredWidth, firstPosition[1] + measuredHeight
+    )
+    val rectSecondView = Rect(
+        secondPosition[0], secondPosition[1],
+        secondPosition[0] + secondView.measuredWidth, secondPosition[1] + secondView.measuredHeight
+    )
     return rectFirstView.intersect(rectSecondView);
 }
 
